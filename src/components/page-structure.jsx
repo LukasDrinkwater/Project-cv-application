@@ -7,8 +7,8 @@ import { ExperienceBox } from "./sidebar-experience";
 function Sidebar() {
   return (
     <div className="sidebarContainer">
-      <PersonalDetailsBox />
-      <EducationBox />
+      {/* <PersonalDetailsBox /> */}
+      {/* <EducationBox /> */}
       <ExperienceBox />
     </div>
     // call personal details component

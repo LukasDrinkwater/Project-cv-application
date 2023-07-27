@@ -11,6 +11,7 @@ function ExperienceBox() {
       <StartDateExperienceInput />
       <EndDateExperienceInput />
       <ExperienceLocationInput />
+      <ExperienceDescription />
       <div className="experienceList">{}</div>
     </div>
   );
@@ -94,12 +95,40 @@ function ExperienceLocationInput() {
   );
 }
 
-function ExperienceDescriptionLine(props) {
-  const [descriptionLineValue, setDescriptionLine] = useState(
-    "Description/Responsibility"
-  );
+// Component that is the contaner for the expereince list
+function ExperienceDescription(props) {
+  const experienceLineArray = [];
 
-  return <li value={descriptionLineValue} />;
+  let IdCount = experienceLineArray.length;
+
+  let newBlankLine = { id: IdCount, text: "Description/Responsibility" };
+
+  if (experienceLineArray.length === 0) {
+    experienceLineArray.push(newBlankLine);
+  }
+
+  // const [descriptionLineValue, setDescriptionLine] = useState(
+  //   "Description/Responsibility"
+  // );
+
+  return <ExperienceLines lines={experienceLineArray} />;
+}
+
+// Component that creates the experience lines
+function ExperienceLines(props) {
+  const lines = props.lines;
+
+  const [lineValue, setLine] = useState("");
+
+  return (
+    <div className="experienceLists">
+      {lines.map((line) => (
+        <div className="experienceLine" key={line.id}>
+          <textarea placeholder={"Description/Responsibility"}></textarea>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 function AddExperienceButton() {
