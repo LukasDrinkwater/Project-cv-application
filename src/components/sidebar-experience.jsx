@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { v4 as uuid } from "uuid";
 
 function ExperienceBox() {
   // const experienceList =
 
   return (
     <div className="experienceContainer">
-      <h2>Experience</h2>
+      <h2>Professional Experience</h2>
       <CompanyInput />
       <PositionInput />
       <StartDateExperienceInput />
@@ -96,35 +97,30 @@ function ExperienceLocationInput() {
 }
 
 // Component that is the contaner for the expereince list
-function ExperienceDescription(props) {
-  const experienceLineArray = [];
+function ExperienceDescription() {
+  let newLine = { id: uuid(), text: "" };
 
-  let IdCount = experienceLineArray.length;
+  const [lines, setLines] = useState([{ id: uuid(), text: "" }]);
 
-  let newBlankLine = { id: IdCount, text: "Description/Responsibility" };
-
-  if (experienceLineArray.length === 0) {
-    experienceLineArray.push(newBlankLine);
-  }
-
-  // const [descriptionLineValue, setDescriptionLine] = useState(
-  //   "Description/Responsibility"
-  // );
-
-  return <ExperienceLines lines={experienceLineArray} />;
+  return (
+    <div className="experienceLinesContainer">
+      <p>Tasks/Responsibilities</p>
+      <ExperienceLines lines={lines} />
+    </div>
+  );
 }
 
 // Component that creates the experience lines
 function ExperienceLines(props) {
   const lines = props.lines;
 
-  const [lineValue, setLine] = useState("");
-
   return (
     <div className="experienceLists">
       {lines.map((line) => (
         <div className="experienceLine" key={line.id}>
-          <textarea placeholder={"Description/Responsibility"}></textarea>
+          <textarea placeholder={"Description/Responsibility"}>
+            {line.text}
+          </textarea>
         </div>
       ))}
     </div>
