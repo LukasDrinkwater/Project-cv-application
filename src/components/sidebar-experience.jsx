@@ -98,14 +98,25 @@ function ExperienceLocationInput() {
 
 // Component that is the contaner for the expereince list
 function ExperienceDescription() {
-  let newLine = { id: uuid(), text: "" };
-
   const [lines, setLines] = useState([{ id: uuid(), text: "" }]);
+
+  const handleDelete = (id) => {
+    const newLines = lines.filter((line) => line.id !== id);
+    setLines(newLines);
+  };
+
+  const handleAddLine = () => {
+    let newLine = { id: uuid(), text: "" };
+    setLines([...lines, newLine]);
+  };
+
+  const updateLine = (id) => {};
 
   return (
     <div className="experienceLinesContainer">
       <p>Tasks/Responsibilities</p>
-      <ExperienceLines lines={lines} />
+      <ExperienceLines lines={lines} handleDelete={handleDelete} />
+      <button onClick={() => handleAddLine()}>Add</button>
     </div>
   );
 }
@@ -113,24 +124,22 @@ function ExperienceDescription() {
 // Component that creates the experience lines
 function ExperienceLines(props) {
   const lines = props.lines;
+  const handleDelete = props.handleDelete;
 
   return (
     <div className="experienceLists">
       {lines.map((line) => (
         <div className="experienceLine" key={line.id}>
-          <textarea placeholder={"Description/Responsibility"}>
-            {line.text}
-          </textarea>
+          <textarea
+            value={line.text}
+            placeholder={"Description/Responsibility"}
+            onChange={(event) => setLines}
+          ></textarea>
+          <button onClick={() => handleDelete(line.id)}>X</button>
         </div>
       ))}
     </div>
   );
-}
-
-function AddExperienceButton() {
-  <div className="addExperienceButtonContainer">
-    <button>Add Experience</button>
-  </div>;
 }
 
 export { ExperienceBox };
