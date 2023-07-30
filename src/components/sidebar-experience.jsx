@@ -110,12 +110,22 @@ function ExperienceDescription() {
     setLines([...lines, newLine]);
   };
 
-  const updateLine = (id) => {};
+  const handleChange = (line, e) => {
+    console.log(line);
+    // const arrayIndex = lines.findIndex((listLine) => listLine.id === line.id);
+    // const newLines = lines.slice();
+    // newLines[arrayIndex].text = e.target.value;
+    // setLines(newLines);
+  };
 
   return (
     <div className="experienceLinesContainer">
       <p>Tasks/Responsibilities</p>
-      <ExperienceLines lines={lines} handleDelete={handleDelete} />
+      <ExperienceLines
+        lines={lines}
+        handleDelete={handleDelete}
+        handleChange={handleChange}
+      />
       <button onClick={() => handleAddLine()}>Add</button>
     </div>
   );
@@ -125,6 +135,7 @@ function ExperienceDescription() {
 function ExperienceLines(props) {
   const lines = props.lines;
   const handleDelete = props.handleDelete;
+  const handleChange = props.handleChange;
 
   return (
     <div className="experienceLists">
@@ -133,7 +144,7 @@ function ExperienceLines(props) {
           <textarea
             value={line.text}
             placeholder={"Description/Responsibility"}
-            onChange={(event) => setLines}
+            onChange={(event) => handleChange(event)}
           ></textarea>
           <button onClick={() => handleDelete(line.id)}>X</button>
         </div>
