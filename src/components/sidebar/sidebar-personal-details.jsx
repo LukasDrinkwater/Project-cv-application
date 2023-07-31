@@ -3,12 +3,14 @@ import { useState } from "react";
 // Component that creates the personal details box
 function PersonalDetailsBox() {
   return (
-    <div className="peronalDetailsContainer">
+    <div className="personalDetailsContainer">
       <h2>Personal Details</h2>
-      <FullnameInput />
-      <EmailInput />
-      <PhoneNumberInput />
-      <AddressInput />
+      <form>
+        <FullnameInput />
+        <EmailInput />
+        <PhoneNumberInput />
+        <AddressInput />
+      </form>
     </div>
   );
 }
@@ -28,7 +30,7 @@ function FullnameInput() {
 
   return (
     <div className="fullNameInputContainer">
-      <p>Full name</p>
+      <label>Full name</label>
       <input
         type="text"
         value={fullNameValue}
@@ -45,12 +47,12 @@ function EmailInput() {
 
   return (
     <div className="emailInputContainer">
-      <p>Email</p>
+      <label>Email</label>
       <input
         type="email"
         value={emailValue}
         placeholder="Email"
-        onChange={(event) => setEmail(event.tagert.value)}
+        onChange={(event) => setEmail(event.target.value)}
       />
     </div>
   );
@@ -62,7 +64,7 @@ function PhoneNumberInput() {
 
   return (
     <div className="phoneNumberInputContainer">
-      <p>Phone Number</p>
+      <label>Phone Number</label>
       <input
         type="text"
         value={phoneNumber}
@@ -79,7 +81,7 @@ function AddressInput() {
 
   return (
     <div className="addressInputContainer">
-      <p>Address</p>
+      <label>Address</label>
       <input
         type="text"
         value={address}

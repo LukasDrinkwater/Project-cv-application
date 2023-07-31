@@ -7,13 +7,14 @@ function ExperienceBox() {
   return (
     <div className="experienceContainer">
       <h2>Professional Experience</h2>
-      <CompanyInput />
-      <PositionInput />
-      <StartDateExperienceInput />
-      <EndDateExperienceInput />
-      <ExperienceLocationInput />
-      <ExperienceDescription />
-      <div className="experienceList">{}</div>
+      <form>
+        <CompanyInput />
+        <PositionInput />
+        <StartDateExperienceInput />
+        <EndDateExperienceInput />
+        <ExperienceLocationInput />
+        <ExperienceDescription />
+      </form>
     </div>
   );
 }
@@ -23,6 +24,7 @@ function CompanyInput() {
 
   return (
     <div className="experienceInputContainer">
+      <label>Company Name</label>
       <input
         type="text"
         value={companyValue}
@@ -38,6 +40,7 @@ function PositionInput() {
 
   return (
     <div className="positionInputContainer">
+      <label>Position</label>
       <input
         type="text"
         value={positionValue}
@@ -53,7 +56,7 @@ function StartDateExperienceInput() {
 
   return (
     <div className="startDateInputContainer">
-      <p>Start Date</p>
+      <label>Start Date</label>
       <input
         type="text"
         value={startDateValue}
@@ -69,7 +72,7 @@ function EndDateExperienceInput() {
 
   return (
     <div className="endDateInputContainer">
-      <p>End Date</p>
+      <label>End Date</label>
       <input
         type="text"
         value={endDateValue}
@@ -85,7 +88,7 @@ function ExperienceLocationInput() {
 
   return (
     <div className="experienceLocationContainer">
-      <p>Location</p>
+      <label>Location</label>
       <input
         type="text"
         value={locationValue}
@@ -108,25 +111,32 @@ function ExperienceDescription() {
   const handleAddLine = () => {
     let newLine = { id: uuid(), text: "" };
     setLines([...lines, newLine]);
+    console.log("add");
   };
 
   const handleChange = (line, e) => {
-    console.log(line);
-    // const arrayIndex = lines.findIndex((listLine) => listLine.id === line.id);
-    // const newLines = lines.slice();
-    // newLines[arrayIndex].text = e.target.value;
-    // setLines(newLines);
+    // console.log(line.id);
+    const arrayIndex = lines.findIndex((listLine) => listLine.id === line.id);
+    const newLines = lines.slice();
+    newLines[arrayIndex].text = e.target.value;
+    setLines(newLines);
   };
 
   return (
     <div className="experienceLinesContainer">
-      <p>Tasks/Responsibilities</p>
+      <label>Tasks/Responsibilities</label>
       <ExperienceLines
         lines={lines}
         handleDelete={handleDelete}
         handleChange={handleChange}
       />
-      <button onClick={() => handleAddLine()}>Add</button>
+      <button
+        type="button"
+        onSubmit={(event) => event.preventDefault}
+        onClick={() => handleAddLine()}
+      >
+        Add
+      </button>
     </div>
   );
 }
@@ -144,7 +154,7 @@ function ExperienceLines(props) {
           <textarea
             value={line.text}
             placeholder={"Description/Responsibility"}
-            onChange={(event) => handleChange(event)}
+            onChange={(event) => handleChange(line, event)}
           ></textarea>
           <button onClick={() => handleDelete(line.id)}>X</button>
         </div>

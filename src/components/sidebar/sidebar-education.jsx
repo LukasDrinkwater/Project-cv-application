@@ -4,10 +4,12 @@ function EducationBox() {
   return (
     <div className="educationBoxContainer">
       <h2>Education</h2>
-      <SchoolInput />
-      <DegreeInput />
-      <StartDateInput />
-      <EndDateInput />
+      <form>
+        <SchoolInput />
+        <DegreeInput />
+        <StartDateInput />
+        <EndDateInput />
+      </form>
     </div>
   );
 }
@@ -17,7 +19,7 @@ function SchoolInput() {
 
   return (
     <div className="schoolInputContainer">
-      <p>School</p>
+      <label>School</label>
       <input
         type="text"
         value={schoolValue}
@@ -33,7 +35,7 @@ function DegreeInput() {
 
   return (
     <div className="degreeInputContainer">
-      <p>Degree/Course</p>
+      <label>Degree/Course</label>
       <input
         type="text"
         value={degreeValue}
@@ -49,7 +51,7 @@ function StartDateInput() {
 
   return (
     <div className="startDateInputContainer">
-      <p>Start Date</p>
+      <label>Start Date</label>
       <input
         type="text"
         value={startDateValue}
@@ -65,7 +67,7 @@ function EndDateInput() {
 
   return (
     <div className="endDateInputContainer">
-      <p>End Date</p>
+      <label>End Date</label>
       <input
         type="text"
         value={endDateValue}
