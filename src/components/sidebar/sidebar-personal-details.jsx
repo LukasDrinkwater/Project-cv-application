@@ -1,12 +1,18 @@
 import { useState } from "react";
 
 // Component that creates the personal details box
-function PersonalDetailsBox() {
+function PersonalDetailsBox(props) {
+  const fullNameValue = props.fullNameValue;
+  const setFullName = props.setFullName;
+
   return (
     <div className="personalDetailsContainer">
       <h2>Personal Details</h2>
       <form>
-        <FullnameInput />
+        <FullnameInput
+          fullNameValue={fullNameValue}
+          setFullName={setFullName}
+        />
         <EmailInput />
         <PhoneNumberInput />
         <AddressInput />
@@ -25,9 +31,10 @@ function PersonalDetailsBox() {
 // }
 
 // Component for Full name
-function FullnameInput() {
-  const [fullNameValue, setFullName] = useState("");
-
+function FullnameInput(props) {
+  // const [fullNameValue, setFullName] = useState("");
+  const fullNameValue = props.fullNameValue;
+  const setFullName = props.setFullName;
   return (
     <div className="fullNameInputContainer">
       <label>Full name</label>
