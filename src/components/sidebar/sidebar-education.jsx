@@ -1,21 +1,37 @@
 import { useState } from "react";
 
-function EducationBox() {
+function EducationBox(props) {
+  const schoolValue = props.schoolValue;
+  const setSchool = props.setSchool;
+
+  const degreeValue = props.degreeValue;
+  const setDegree = props.setDegree;
+
+  const startDateValueEducation = props.startDateValueEducation;
+  const setStartDateEducation = props.setStartDateEducation;
+
+  const endDateValue = props.endDateValue;
+  const setEndDate = props.setEndDate;
   return (
     <div className="educationBoxContainer">
       <h2>Education</h2>
       <form>
-        <SchoolInput />
-        <DegreeInput />
-        <StartDateInput />
-        <EndDateInput />
+        <SchoolInput schoolValue={schoolValue} setSchool={setSchool} />
+        <DegreeInput degreeValue={degreeValue} setDegree={setDegree} />
+        <StartDateInput
+          startDateValueEducation={startDateValueEducation}
+          setStartDateEducation={setStartDateEducation}
+        />
+        <EndDateInput endDateValue={endDateValue} setEndDate={setEndDate} />
       </form>
     </div>
   );
 }
 
-function SchoolInput() {
-  const [schoolValue, setSchool] = useState("");
+function SchoolInput(props) {
+  // const [schoolValue, setSchool] = useState("");
+  const schoolValue = props.schoolValue;
+  const setSchool = props.setSchool;
 
   return (
     <div className="schoolInputContainer">
@@ -30,8 +46,10 @@ function SchoolInput() {
   );
 }
 
-function DegreeInput() {
-  const [degreeValue, setDegree] = useState("");
+function DegreeInput(props) {
+  // const [degreeValue, setDegree] = useState("");
+  const degreeValue = props.degreeValue;
+  const setDegree = props.setDegree;
 
   return (
     <div className="degreeInputContainer">
@@ -46,24 +64,28 @@ function DegreeInput() {
   );
 }
 
-function StartDateInput() {
-  const [startDateValue, setStartDate] = useState("");
+function StartDateInput(props) {
+  // const [startDateValue, setStartDate] = useState("");
+  const startDateValueEducation = props.startDateValueEducation;
+  const setStartDateEducation = props.setStartDateEducation;
 
   return (
     <div className="startDateInputContainer">
       <label>Start Date</label>
       <input
         type="text"
-        value={startDateValue}
+        value={startDateValueEducation}
         placeholder="Start Date"
-        onChange={(event) => setStartDate(event.target.value)}
+        onChange={(event) => setStartDateEducation(event.target.value)}
       />
     </div>
   );
 }
 
-function EndDateInput() {
-  const [endDateValue, setEndDate] = useState("");
+function EndDateInput(props) {
+  // const [endDateValue, setEndDate] = useState("");
+  const endDateValue = props.endDateValue;
+  const setEndDate = props.setEndDate;
 
   return (
     <div className="endDateInputContainer">
@@ -78,17 +100,17 @@ function EndDateInput() {
   );
 }
 
-function OptionsContainer() {
-  // const [ ]
+// function OptionsContainer() {
+//   // const [ ]
 
-  return (
-    <div className="educationOptionsContainer">
-      <button className="deleteButton">Delete</button>
-      <button className="cancelButton">Cancel</button>
-      <button className="saveButton">Save</button>
-      <button className="educationCourseSwitchButton"></button>
-    </div>
-  );
-}
+//   return (
+//     <div className="educationOptionsContainer">
+//       <button className="deleteButton">Delete</button>
+//       <button className="cancelButton">Cancel</button>
+//       <button className="saveButton">Save</button>
+//       <button className="educationCourseSwitchButton"></button>
+//     </div>
+//   );
+// }
 
 export { EducationBox };

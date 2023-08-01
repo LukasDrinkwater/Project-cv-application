@@ -5,6 +5,15 @@ function PersonalDetailsBox(props) {
   const fullNameValue = props.fullNameValue;
   const setFullName = props.setFullName;
 
+  const emailValue = props.emailValue;
+  const setEmail = props.setEmail;
+
+  const phoneNumber = props.phoneNumber;
+  const setPhoneNumber = props.setPhoneNumber;
+
+  const address = props.address;
+  const setAddress = props.setAddress;
+
   return (
     <div className="personalDetailsContainer">
       <h2>Personal Details</h2>
@@ -13,9 +22,12 @@ function PersonalDetailsBox(props) {
           fullNameValue={fullNameValue}
           setFullName={setFullName}
         />
-        <EmailInput />
-        <PhoneNumberInput />
-        <AddressInput />
+        <EmailInput emailValue={emailValue} setEmail={setEmail} />
+        <PhoneNumberInput
+          phoneNumber={phoneNumber}
+          setPhoneNumber={setPhoneNumber}
+        />
+        <AddressInput address={address} setAddress={setAddress} />
       </form>
     </div>
   );
@@ -49,8 +61,10 @@ function FullnameInput(props) {
 }
 
 // Component for email
-function EmailInput() {
-  const [emailValue, setEmail] = useState("");
+function EmailInput(props) {
+  // const [emailValue, setEmail] = useState("");
+  const emailValue = props.emailValue;
+  const setEmail = props.setEmail;
 
   return (
     <div className="emailInputContainer">
@@ -66,8 +80,10 @@ function EmailInput() {
 }
 
 // Component for phone number
-function PhoneNumberInput() {
-  const [phoneNumber, setPhoneNumber] = useState("");
+function PhoneNumberInput(props) {
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  const phoneNumber = props.phoneNumber;
+  const setPhoneNumber = props.setPhoneNumber;
 
   return (
     <div className="phoneNumberInputContainer">
@@ -83,8 +99,10 @@ function PhoneNumberInput() {
 }
 
 // Component for address
-function AddressInput() {
-  const [address, setAddress] = useState("");
+function AddressInput(props) {
+  // const [address, setAddress] = useState("");
+  const address = props.address;
+  const setAddress = props.setAddress;
 
   return (
     <div className="addressInputContainer">
