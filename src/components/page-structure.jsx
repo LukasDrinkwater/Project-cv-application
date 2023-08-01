@@ -8,39 +8,64 @@ import { v4 as uuid } from "uuid";
 // component that creates the sidebar structure and calls the personal details,
 // education and experience components.
 function Sidebar() {
-  // PersonalDetailsBox
-  const [fullNameValue, setFullName] = useState("");
-  const [emailValue, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [address, setAddress] = useState("");
+  const [personalData, setPersonalData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+  });
 
-  // EducationBox
-  const [schoolValue, setSchool] = useState("");
-  const [degreeValue, setDegree] = useState("");
-  const [startDateValueEducation, setStartDateEducation] = useState("");
-  const [endDateValueEducation, setEndDateEducation] = useState("");
+  const [educationData, setEducationData] = useState({
+    school: "",
+    degree: "",
+    startDate: "",
+    endDate: "",
+  });
 
-  // ExperienceBox
-  const [companyValue, setCompany] = useState("");
-  const [positionValue, setPosition] = useState("");
-  const [startDateValueExperience, setStartDateExperience] = useState("");
-  const [endDateValueExperience, setEndDateExperience] = useState("");
-  const [locationValue, setLocation] = useState("");
-  const [lines, setLines] = useState([{ id: uuid(), text: "" }]);
+  const [expereinceData, setExperienceData] = useState({
+    company: "",
+    position: "",
+    startDate: "",
+    endDate: "",
+    location: "",
+    experience: [{ id: uuid(), text: "" }],
+  });
+
+  // // PersonalDetailsBox
+  // const [fullNameValue, setFullName] = useState("");
+  // const [emailValue, setEmail] = useState("");
+  // const [phoneNumber, setPhoneNumber] = useState("");
+  // const [address, setAddress] = useState("");
+
+  // // EducationBox
+  // const [schoolValue, setSchool] = useState("");
+  // const [degreeValue, setDegree] = useState("");
+  // const [startDateValueEducation, setStartDateEducation] = useState("");
+  // const [endDateValueEducation, setEndDateEducation] = useState("");
+
+  // // ExperienceBox
+  // const [companyValue, setCompany] = useState("");
+  // const [positionValue, setPosition] = useState("");
+  // const [startDateValueExperience, setStartDateExperience] = useState("");
+  // const [endDateValueExperience, setEndDateExperience] = useState("");
+  // const [locationValue, setLocation] = useState("");
+  // const [lines, setLines] = useState([{ id: uuid(), text: "" }]);
 
   return (
     <div className="sidebarContainer">
       <PersonalDetailsBox
-        fullNameValue={fullNameValue}
-        setFullName={setFullName}
-        emailValue={emailValue}
-        setEmail={setEmail}
-        phoneNumber={phoneNumber}
-        setPhoneNumber={setPhoneNumber}
-        address={address}
-        setAddress={setAddress}
+        personalData={personalData}
+        setPersonalData={setPersonalData}
+        // fullNameValue={fullNameValue}
+        // setFullName={setFullName}
+        // emailValue={emailValue}
+        // setEmail={setEmail}
+        // phoneNumber={phoneNumber}
+        // setPhoneNumber={setPhoneNumber}
+        // address={address}
+        // setAddress={setAddress}
       />
-      <EducationBox
+      {/* <EducationBox
         schoolValue={schoolValue}
         setSchool={setSchool}
         degreeValue={degreeValue}
@@ -63,7 +88,7 @@ function Sidebar() {
         setLocation={setLocation}
         lines={lines}
         setLines={setLines}
-      />
+      /> */}
       <SubmitForm />
     </div>
   );
