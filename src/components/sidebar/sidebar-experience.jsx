@@ -1,156 +1,86 @@
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
+import { LineInputText } from "./LineInputText";
 
-function ExperienceBox(props) {
-  const companyValue = props.companyValue;
-  const setCompany = props.setCompany;
+function ExperienceBox({ data, setData }) {
+  const lines = data.experience;
+  const setLines = setData;
 
-  const positionValue = props.positionValue;
-  const setPosition = props.setPosition;
-
-  const startDateValueExperience = props.startDateValueExperience;
-  const setStartDateExperience = props.setStartDateExperience;
-
-  const endDateValueExperience = props.endDateValueExperience;
-  const setEndDateExperience = props.setEndDateExperience;
-
-  const locationValue = props.locationValue;
-  const setLocation = props.setLocation;
-
-  const lines = props.lines;
-  const setLines = props.setLines;
+  const updateData = (propToUpdate, value) => {
+    // prevData is a variable you can access when running an arrow
+    // function when calling a set function.
+    setData((prevData) => ({
+      ...prevData,
+      [propToUpdate]: value,
+    }));
+  };
   return (
     <div className="experienceContainer">
       <h2>Professional Experience</h2>
       <form>
-        <CompanyInput companyValue={companyValue} setCompany={setCompany} />
-        <PositionInput
-          positionValue={positionValue}
-          setPosition={setPosition}
+        <LineInputText
+          label={"Company Name"}
+          placeholder={"Company Name"}
+          className={"companyInputContainer"}
+          forProp={"company"}
+          value={data.company}
+          handleSetFullName={updateData}
         />
-        <StartDateExperienceInput
-          startDateValueExperience={startDateValueExperience}
-          setStartDateExperience={setStartDateExperience}
+        <LineInputText
+          label={"Position"}
+          placeholder={"Position"}
+          className={"positionInputContainer"}
+          forProp={"position"}
+          value={data.position}
+          handleSetFullName={updateData}
         />
-        <EndDateExperienceInput
-          endDateValueExperience={endDateValueExperience}
-          setEndDateExperience={setEndDateExperience}
+        <LineInputText
+          label={"Start Date"}
+          placeholder={"Start Date"}
+          className={"startDateInputContainer"}
+          forProp={"startDate"}
+          value={data.startDate}
+          handleSetFullName={updateData}
         />
-        <ExperienceLocationInput
-          locationValue={locationValue}
-          setLocation={setLocation}
+        <LineInputText
+          label={"End Date"}
+          placeholder={"End Date"}
+          className={"endDateInputContainer"}
+          forProp={"endDate"}
+          value={data.endDate}
+          handleSetFullName={updateData}
         />
-        <ExperienceDescription lines={lines} setLines={setLines} />
+        <LineInputText
+          label={"Location"}
+          placeholder={"Location"}
+          className={"experienceLocationContainer"}
+          forProp={"location"}
+          value={data.location}
+          handleSetFullName={updateData}
+        />
+        <ExperienceDescription data={data} setData={setData} />
       </form>
     </div>
   );
 }
 
-function CompanyInput(props) {
-  // const [companyValue, setCompany] = useState("");
-  const companyValue = props.companyValue;
-  const setCompany = props.setCompany;
-
-  return (
-    <div className="experienceInputContainer">
-      <label>Company Name</label>
-      <input
-        type="text"
-        value={companyValue}
-        placeholder="Company Name"
-        onChange={(event) => setCompany(event.target.value)}
-      />
-    </div>
-  );
-}
-
-function PositionInput(props) {
-  // const [positionValue, setPosition] = useState("");
-  const positionValue = props.positionValue;
-  const setPosition = props.setPosition;
-  return (
-    <div className="positionInputContainer">
-      <label>Position</label>
-      <input
-        type="text"
-        value={positionValue}
-        placeholder="Position"
-        onChange={(event) => setPosition(event.target.value)}
-      />
-    </div>
-  );
-}
-
-function StartDateExperienceInput(props) {
-  // const [startDateValueExperience, setStartDateExperience] = useState("");
-
-  const startDateValueExperience = props.startDateValueExperience;
-  const setStartDateExperience = props.setStartDateExperience;
-
-  return (
-    <div className="startDateInputContainer">
-      <label>Start Date</label>
-      <input
-        type="text"
-        value={startDateValueExperience}
-        placeholder="Start Date"
-        onChange={(event) => setStartDateExperience(event.target.value)}
-      />
-    </div>
-  );
-}
-
-function EndDateExperienceInput(props) {
-  // const [endDateValueExperience, setEndDateExperience] = useState("");
-  const endDateValueExperience = props.endDateValueExperience;
-  const setEndDateExperience = props.setEndDateExperience;
-
-  return (
-    <div className="endDateInputContainer">
-      <label>End Date</label>
-      <input
-        type="text"
-        value={endDateValueExperience}
-        placeholder="End Date"
-        onChange={(event) => setEndDateExperience(event.target.value)}
-      />
-    </div>
-  );
-}
-
-function ExperienceLocationInput(props) {
-  // const [locationValue, setLocation] = useState("");
-  const locationValue = props.locationValue;
-  const setLocation = props.setLocation;
-
-  return (
-    <div className="experienceLocationContainer">
-      <label>Location</label>
-      <input
-        type="text"
-        value={locationValue}
-        placeholder="Location"
-        onChange={(event) => setLocation(event.target.value)}
-      />
-    </div>
-  );
-}
-
 // Component that is the contaner for the expereince list
-function ExperienceDescription(props) {
+function ExperienceDescription({ data, setData }) {
   // const [lines, setLines] = useState([{ id: uuid(), text: "" }]);
-  const lines = props.lines;
-  const setLines = props.setLines;
+  const lines = data.experience;
+  // const setLines = props.setLines;
 
   const handleDelete = (id) => {
     const newLines = lines.filter((line) => line.id !== id);
-    setLines(newLines);
+    const newData = data;
+    // console.log(id);
+    newData.experience = newLines;
+    setData(newData);
   };
 
   const handleAddLine = () => {
     let newLine = { id: uuid(), text: "" };
-    setLines([...lines, newLine]);
-    console.log("add");
+    setData([...lines, newLine]);
   };
 
   const handleChange = (line, e) => {
@@ -181,11 +111,7 @@ function ExperienceDescription(props) {
 }
 
 // Component that creates the experience lines
-function ExperienceLines(props) {
-  const lines = props.lines;
-  const handleDelete = props.handleDelete;
-  const handleChange = props.handleChange;
-
+function ExperienceLines({ lines, handleDelete, handleChange }) {
   return (
     <div className="experienceLists">
       {lines.map((line) => (

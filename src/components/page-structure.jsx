@@ -31,64 +31,11 @@ function Sidebar() {
     experience: [{ id: uuid(), text: "" }],
   });
 
-  // // PersonalDetailsBox
-  // const [fullNameValue, setFullName] = useState("");
-  // const [emailValue, setEmail] = useState("");
-  // const [phoneNumber, setPhoneNumber] = useState("");
-  // const [address, setAddress] = useState("");
-
-  // // EducationBox
-  // const [schoolValue, setSchool] = useState("");
-  // const [degreeValue, setDegree] = useState("");
-  // const [startDateValueEducation, setStartDateEducation] = useState("");
-  // const [endDateValueEducation, setEndDateEducation] = useState("");
-
-  // // ExperienceBox
-  // const [companyValue, setCompany] = useState("");
-  // const [positionValue, setPosition] = useState("");
-  // const [startDateValueExperience, setStartDateExperience] = useState("");
-  // const [endDateValueExperience, setEndDateExperience] = useState("");
-  // const [locationValue, setLocation] = useState("");
-  // const [lines, setLines] = useState([{ id: uuid(), text: "" }]);
-
   return (
     <div className="sidebarContainer">
-      <PersonalDetailsBox
-        personalData={personalData}
-        setPersonalData={setPersonalData}
-        // fullNameValue={fullNameValue}
-        // setFullName={setFullName}
-        // emailValue={emailValue}
-        // setEmail={setEmail}
-        // phoneNumber={phoneNumber}
-        // setPhoneNumber={setPhoneNumber}
-        // address={address}
-        // setAddress={setAddress}
-      />
-      {/* <EducationBox
-        schoolValue={schoolValue}
-        setSchool={setSchool}
-        degreeValue={degreeValue}
-        setDegree={setDegree}
-        startDateValueEducation={startDateValueEducation}
-        setStartDateEducation={setStartDateEducation}
-        endDateValueEducation={endDateValueEducation}
-        setEndDateEducation={setEndDateEducation}
-      />
-      <ExperienceBox
-        companyValue={companyValue}
-        setCompany={setCompany}
-        positionValue={positionValue}
-        setPosition={setPosition}
-        startDateValueExperience={startDateValueExperience}
-        setStartDateExperience={setStartDateExperience}
-        endDateValueExperience={endDateValueExperience}
-        setEndDateExperience={setEndDateExperience}
-        locationValue={locationValue}
-        setLocation={setLocation}
-        lines={lines}
-        setLines={setLines}
-      /> */}
+      <PersonalDetailsBox data={personalData} setData={setPersonalData} />
+      <EducationBox data={educationData} setData={setEducationData} />
+      <ExperienceBox data={expereinceData} setData={setExperienceData} />
       <SubmitForm />
     </div>
   );
