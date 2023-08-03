@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { LineInputText } from "./LineInputText";
 
 function ExperienceBox({ data, setData }) {
-  const lines = data.experience;
-  const setLines = setData;
+  // const lines = data.experience;
+  // const setLines = setData;
 
   const updateData = (propToUpdate, value) => {
     // prevData is a variable you can access when running an arrow
@@ -24,7 +23,7 @@ function ExperienceBox({ data, setData }) {
           className={"companyInputContainer"}
           forProp={"company"}
           value={data.company}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
         <LineInputText
           label={"Position"}
@@ -32,7 +31,7 @@ function ExperienceBox({ data, setData }) {
           className={"positionInputContainer"}
           forProp={"position"}
           value={data.position}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
         <LineInputText
           label={"Start Date"}
@@ -40,7 +39,7 @@ function ExperienceBox({ data, setData }) {
           className={"startDateInputContainer"}
           forProp={"startDate"}
           value={data.startDate}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
         <LineInputText
           label={"End Date"}
@@ -48,7 +47,7 @@ function ExperienceBox({ data, setData }) {
           className={"endDateInputContainer"}
           forProp={"endDate"}
           value={data.endDate}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
         <LineInputText
           label={"Location"}
@@ -56,16 +55,16 @@ function ExperienceBox({ data, setData }) {
           className={"experienceLocationContainer"}
           forProp={"location"}
           value={data.location}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
-        <ExperienceDescription data={data} setData={setData} />
+        <ExperienceDescription data={data} handleSet={updateData} />
       </form>
     </div>
   );
 }
 
 // Component that is the contaner for the expereince list
-function ExperienceDescription({ data, setData }) {
+function ExperienceDescription({ data, handleSet }) {
   // const [lines, setLines] = useState([{ id: uuid(), text: "" }]);
   const lines = data.experience;
   // const setLines = props.setLines;
@@ -75,12 +74,13 @@ function ExperienceDescription({ data, setData }) {
     const newData = data;
     // console.log(id);
     newData.experience = newLines;
-    setData(newData);
+    handleSet(newData);
   };
 
   const handleAddLine = () => {
     let newLine = { id: uuid(), text: "" };
-    setData([...lines, newLine]);
+    // handleSet([...lines, newLine]);
+    handleSet("experience", [...lines, newLine]);
   };
 
   const handleChange = (line, e) => {
@@ -88,7 +88,7 @@ function ExperienceDescription({ data, setData }) {
     const arrayIndex = lines.findIndex((listLine) => listLine.id === line.id);
     const newLines = lines.slice();
     newLines[arrayIndex].text = e.target.value;
-    setLines(newLines);
+    handleSet(newLines);
   };
 
   return (

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { LineInputText } from "./LineInputText";
 
 function EducationBox({ data, setData }) {
@@ -21,7 +20,7 @@ function EducationBox({ data, setData }) {
           className={"schoolInputContainer"}
           forProp={"school"}
           value={data.school}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
         <LineInputText
           label={"Degree"}
@@ -29,7 +28,7 @@ function EducationBox({ data, setData }) {
           className={"degreeInputContainer"}
           forProp={"degree"}
           value={data.degree}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
         <LineInputText
           label={"Start Date"}
@@ -37,7 +36,7 @@ function EducationBox({ data, setData }) {
           className={"startDateInputContainer"}
           forProp={"startDate"}
           value={data.startDate}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
         <LineInputText
           label={"End Date"}
@@ -45,7 +44,7 @@ function EducationBox({ data, setData }) {
           className={"endDateInputContainer"}
           forProp={"endDate"}
           value={data.endDate}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
       </form>
     </div>

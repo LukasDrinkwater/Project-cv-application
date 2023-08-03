@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { LineInputText } from "./LineInputText";
 
 // Component that creates the personal details box
@@ -22,7 +21,7 @@ function PersonalDetailsBox({ data, setData }) {
           className={"fullNameInputContainer"}
           forProp={"name"}
           value={data.name}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
         <LineInputText
           label={"Email"}
@@ -30,7 +29,7 @@ function PersonalDetailsBox({ data, setData }) {
           className={"emailInputContainer"}
           forProp={"email"}
           value={data.email}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
         <LineInputText
           label={"Phone Number"}
@@ -38,7 +37,7 @@ function PersonalDetailsBox({ data, setData }) {
           className={"phoneNumberInputContainer"}
           forProp={"phoneNumber"}
           value={data.phoneNumber}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
         <LineInputText
           label={"Address"}
@@ -46,7 +45,7 @@ function PersonalDetailsBox({ data, setData }) {
           className={"addressInputContainer"}
           forProp={"address"}
           value={data.address}
-          handleSetFullName={updateData}
+          handleSet={updateData}
         />
       </form>
     </div>
