@@ -63,7 +63,7 @@ function ExperienceBox({ data, setData }) {
   );
 }
 
-// Component that is the contaner for the expereince list
+// Component that is the contaner for the experience list
 function ExperienceDescription({ data, handleSet }) {
   // const [lines, setLines] = useState([{ id: uuid(), text: "" }]);
   const lines = data.experience;
@@ -83,11 +83,13 @@ function ExperienceDescription({ data, handleSet }) {
     handleSet("experience", [...lines, newLine]);
   };
 
-  const handleChange = (line, e) => {
+  const handleChange = (line, event) => {
     // console.log(line.id);
+    // finds index of line from line id
     const arrayIndex = lines.findIndex((listLine) => listLine.id === line.id);
+    // or [...lines]
     const newLines = lines.slice();
-    newLines[arrayIndex].text = e.target.value;
+    newLines[arrayIndex].text = event.target.value;
     handleSet(newLines);
   };
 
