@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Sidebar } from "./components/page-structure";
+import { Sidebar } from "./components/sidebar/sidebar";
 import { v4 as uuid } from "uuid";
 import "./App.css";
 
@@ -18,14 +18,17 @@ function App() {
     endDate: "",
   });
 
-  const [experienceData, setExperienceData] = useState({
-    company: "",
-    position: "",
-    startDate: "",
-    endDate: "",
-    location: "",
-    experience: [{ id: uuid(), text: "" }],
-  });
+  const [experienceData, setExperienceData] = useState([
+    {
+      id: uuid(),
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+      experience: [{ id: uuid(), text: "" }],
+    },
+  ]);
 
   return (
     <Sidebar

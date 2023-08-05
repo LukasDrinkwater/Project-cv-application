@@ -1,10 +1,46 @@
 import { v4 as uuid } from "uuid";
 import { LineInputText } from "./LineInputText";
 
-function ExperienceBox({ data, setData }) {
-  // const lines = data.experience;
-  // const setLines = setData;
+function ExperienceContainer({ experienceData, setExperienceData }) {
+  console.log(experienceData);
 
+  const handleAddCompany = () => {
+    console.log("here");
+    let newCompany = {
+      id: uuid(),
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+      experience: [{ id: uuid(), text: "" }],
+    };
+
+    setExperienceData([...experienceData, newCompany]);
+  };
+
+  return (
+    <div className="experienceContainerMain">
+      <h2>Professional Experience</h2>
+      {experienceData.map((experience) => (
+        <ExperienceBox
+          data={experience}
+          setData={setExperienceData}
+          key={experience.id}
+        />
+      ))}
+      <button
+        type="button"
+        onSubmit={(event) => event.preventDefault}
+        onClick={() => handleAddCompany()}
+      >
+        Add Company
+      </button>
+    </div>
+  );
+}
+
+function ExperienceBox({ data, setData }) {
   const updateData = (propToUpdate, value) => {
     // prevData is a variable you can access when running an arrow
     // function when calling a set function.
@@ -15,7 +51,6 @@ function ExperienceBox({ data, setData }) {
   };
   return (
     <div className="experienceContainer">
-      <h2>Professional Experience</h2>
       <form>
         <LineInputText
           label={"Company Name"}
@@ -65,14 +100,13 @@ function ExperienceBox({ data, setData }) {
 
 // Component that is the contaner for the experience list
 function ExperienceDescription({ data, handleSet }) {
-  // const [lines, setLines] = useState([{ id: uuid(), text: "" }]);
+  console.log(data);
   const lines = data.experience;
-  // const setLines = props.setLines;
 
   const handleDelete = (id) => {
+    const company = data.filter;
     const newLines = lines.filter((line) => line.id !== id);
     const newData = data;
-    // console.log(id);
     newData.experience = newLines;
     handleSet(newData);
   };
@@ -94,7 +128,7 @@ function ExperienceDescription({ data, handleSet }) {
   };
 
   return (
-    <div className="experienceLinesContainer">
+    <div className="experienceLinesBox">
       <label>Tasks/Responsibilities</label>
       <ExperienceLines
         lines={lines}
@@ -106,7 +140,7 @@ function ExperienceDescription({ data, handleSet }) {
         onSubmit={(event) => event.preventDefault}
         onClick={() => handleAddLine()}
       >
-        Add
+        Add Task
       </button>
     </div>
   );
@@ -130,4 +164,4 @@ function ExperienceLines({ lines, handleDelete, handleChange }) {
   );
 }
 
-export { ExperienceBox };
+export { ExperienceBox, ExperienceContainer };
