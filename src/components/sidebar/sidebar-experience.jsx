@@ -42,23 +42,25 @@ function ExperienceContainer({ experienceData, setExperienceData }) {
 }
 
 function ExperienceBox({ experience, setExperienceData, experienceData }) {
-  const updatePropData = (propToUpdate, value) => {
-    // console.log(propToUpdate, value);
+  const updatePropData = (propToUpdate, value, line) => {
     // prevData is a variable you can access when running an arrow
     // function when calling a set function.
-    console.log(experience);
+    // console.log(propToUpdate);
 
     //
     setExperienceData((prevData) => {
       return prevData.map((company) => {
         if (company.id === experience.id) {
+          // console.log(experience);
           return {
             ...company,
             [propToUpdate]: company[propToUpdate].map((property) => {
+              // console.log("here");
               if (property.id === line.id) {
                 return { ...property, text: value };
               }
-              return { ...property, [propToUpdate]: value };
+              console.log(property);
+              return { ...property, value };
             }),
           };
         }
@@ -66,17 +68,6 @@ function ExperienceBox({ experience, setExperienceData, experienceData }) {
       });
     });
     //
-
-    // setExperienceData((prevData) => {
-    //   const newData = prevData.map((company) => {
-    //     if(company.id === experience.id){
-    //       // return (...company, [propToUpdate]: {value},)
-    //       const newExperience = company.map((property) => {
-
-    //       })
-    //     }
-    //   })
-    // });
 
     // setExperienceData((prevData) => ({
     //   // i need to navigate the the specific company first.
@@ -132,7 +123,7 @@ function ExperienceBox({ experience, setExperienceData, experienceData }) {
           // handleSet={updateData}
           setExperienceData={setExperienceData}
           experienceData={experienceData}
-          updatrePropData={updatePropData}
+          updatePropData={updatePropData}
         />
       </form>
     </div>
@@ -144,6 +135,7 @@ function ExperienceDescription({
   experience,
   setExperienceData,
   experienceData,
+  updatePropData,
 }) {
   // console.log(companyArray);
   const lines = experience.experience;
@@ -164,18 +156,19 @@ function ExperienceDescription({
 
   const handleAddLine = () => {
     let newLine = { id: uuid(), text: "" };
-    // handleSet([...lines, newLine]);
-    handleSet("experience", [...lines, newLine]);
+    setExperienceData((prevData) => {
+      return prevData.map((company) => {
+        if (company.id === experience.id) {
+          console.log(company);
+          const newExperienceLines = [...company.experience, newLine];
+          return { ...company, experience: newExperienceLines };
+        }
+      });
+    });
   };
 
   const handleChange = (line, event) => {
-    // console.log(line.id);
-    // finds index of line from line id
-    const arrayIndex = lines.findIndex((listLine) => listLine.id === line.id);
-    // or [...lines]
-    const newLines = lines.slice();
-    newLines[arrayIndex].text = event.target.value;
-    handleSet(newLines);
+    updatePropData("experience", event.target.value, line);
   };
 
   return (
