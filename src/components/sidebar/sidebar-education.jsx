@@ -1,7 +1,7 @@
 import { LineInputText } from "./LineInputText";
 
 function EducationBox({ data, setData }) {
-  const updateData = (propToUpdate, value) => {
+  const updatePropData = (propToUpdate, value) => {
     // prevData is a variable you can access when running an arrow
     // function when calling a set function.
     setData((prevData) => ({
@@ -20,7 +20,7 @@ function EducationBox({ data, setData }) {
           className={"schoolInputContainer"}
           forProp={"school"}
           value={data.school}
-          handleSet={updateData}
+          updatePropData={updatePropData}
         />
         <LineInputText
           label={"Degree"}
@@ -28,7 +28,7 @@ function EducationBox({ data, setData }) {
           className={"degreeInputContainer"}
           forProp={"degree"}
           value={data.degree}
-          handleSet={updateData}
+          updatePropData={updatePropData}
         />
         <LineInputText
           label={"Start Date"}
@@ -36,7 +36,7 @@ function EducationBox({ data, setData }) {
           className={"startDateInputContainer"}
           forProp={"startDate"}
           value={data.startDate}
-          handleSet={updateData}
+          updatePropData={updatePropData}
         />
         <LineInputText
           label={"End Date"}
@@ -44,7 +44,7 @@ function EducationBox({ data, setData }) {
           className={"endDateInputContainer"}
           forProp={"endDate"}
           value={data.endDate}
-          handleSet={updateData}
+          updatePropData={updatePropData}
         />
       </form>
     </div>

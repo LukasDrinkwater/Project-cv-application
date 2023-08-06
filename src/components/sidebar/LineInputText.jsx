@@ -4,7 +4,7 @@ function LineInputText({
   className,
   forProp,
   value,
-  handleSet,
+  updatePropData,
 }) {
   return (
     <div className={className}>
@@ -13,7 +13,7 @@ function LineInputText({
         type="text"
         value={value}
         placeholder={placeholder}
-        onChange={(event) => handleSet(forProp, event.target.value)}
+        onChange={(event) => updatePropData(forProp, event.target.value)}
       ></input>
     </div>
   );

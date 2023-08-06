@@ -2,7 +2,7 @@ import { LineInputText } from "./LineInputText";
 
 // Component that creates the personal details box
 function PersonalDetailsBox({ data, setData }) {
-  const updateData = (propToUpdate, value) => {
+  const updatePropData = (propToUpdate, value) => {
     // prevData is a variable you can access when running an arrow
     // function when calling a set function.
     setData((prevData) => ({
@@ -21,7 +21,7 @@ function PersonalDetailsBox({ data, setData }) {
           className={"fullNameInputContainer"}
           forProp={"name"}
           value={data.name}
-          handleSet={updateData}
+          updatePropData={updatePropData}
         />
         <LineInputText
           label={"Email"}
@@ -29,7 +29,7 @@ function PersonalDetailsBox({ data, setData }) {
           className={"emailInputContainer"}
           forProp={"email"}
           value={data.email}
-          handleSet={updateData}
+          updatePropData={updatePropData}
         />
         <LineInputText
           label={"Phone Number"}
@@ -37,7 +37,7 @@ function PersonalDetailsBox({ data, setData }) {
           className={"phoneNumberInputContainer"}
           forProp={"phoneNumber"}
           value={data.phoneNumber}
-          handleSet={updateData}
+          updatePropData={updatePropData}
         />
         <LineInputText
           label={"Address"}
@@ -45,7 +45,7 @@ function PersonalDetailsBox({ data, setData }) {
           className={"addressInputContainer"}
           forProp={"address"}
           value={data.address}
-          handleSet={updateData}
+          updatePropData={updatePropData}
         />
       </form>
     </div>

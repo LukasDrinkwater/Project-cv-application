@@ -2,10 +2,10 @@ import { v4 as uuid } from "uuid";
 import { LineInputText } from "./LineInputText";
 
 function ExperienceContainer({ experienceData, setExperienceData }) {
-  console.log(experienceData);
+  // console.log(experienceData);
 
   const handleAddCompany = () => {
-    console.log("here");
+    // console.log("here");
     let newCompany = {
       id: uuid(),
       company: "",
@@ -24,8 +24,9 @@ function ExperienceContainer({ experienceData, setExperienceData }) {
       <h2>Professional Experience</h2>
       {experienceData.map((experience) => (
         <ExperienceBox
-          data={experience}
-          setData={setExperienceData}
+          experience={experience}
+          setExperienceData={setExperienceData}
+          experienceData={experienceData}
           key={experience.id}
         />
       ))}
@@ -40,14 +41,48 @@ function ExperienceContainer({ experienceData, setExperienceData }) {
   );
 }
 
-function ExperienceBox({ data, setData }) {
-  const updateData = (propToUpdate, value) => {
+function ExperienceBox({ experience, setExperienceData, experienceData }) {
+  const updatePropData = (propToUpdate, value) => {
+    // console.log(propToUpdate, value);
     // prevData is a variable you can access when running an arrow
     // function when calling a set function.
-    setData((prevData) => ({
-      ...prevData,
-      [propToUpdate]: value,
-    }));
+    console.log(experience);
+
+    //
+    setExperienceData((prevData) => {
+      return prevData.map((company) => {
+        if (company.id === experience.id) {
+          return {
+            ...company,
+            [propToUpdate]: company[propToUpdate].map((property) => {
+              if (property.id === line.id) {
+                return { ...property, text: value };
+              }
+              return { ...property, [propToUpdate]: value };
+            }),
+          };
+        }
+        return company;
+      });
+    });
+    //
+
+    // setExperienceData((prevData) => {
+    //   const newData = prevData.map((company) => {
+    //     if(company.id === experience.id){
+    //       // return (...company, [propToUpdate]: {value},)
+    //       const newExperience = company.map((property) => {
+
+    //       })
+    //     }
+    //   })
+    // });
+
+    // setExperienceData((prevData) => ({
+    //   // i need to navigate the the specific company first.
+    //   ...prevData,
+    //   [propToUpdate]: value,
+    // }));
   };
   return (
     <div className="experienceContainer">
@@ -57,58 +92,74 @@ function ExperienceBox({ data, setData }) {
           placeholder={"Company Name"}
           className={"companyInputContainer"}
           forProp={"company"}
-          value={data.company}
-          handleSet={updateData}
+          value={experience.company}
+          updatePropData={updatePropData}
         />
         <LineInputText
           label={"Position"}
           placeholder={"Position"}
           className={"positionInputContainer"}
           forProp={"position"}
-          value={data.position}
-          handleSet={updateData}
+          value={experience.position}
+          updatePropData={updatePropData}
         />
         <LineInputText
           label={"Start Date"}
           placeholder={"Start Date"}
           className={"startDateInputContainer"}
           forProp={"startDate"}
-          value={data.startDate}
-          handleSet={updateData}
+          value={experience.startDate}
+          updatePropData={updatePropData}
         />
         <LineInputText
           label={"End Date"}
           placeholder={"End Date"}
           className={"endDateInputContainer"}
           forProp={"endDate"}
-          value={data.endDate}
-          handleSet={updateData}
+          value={experience.endDate}
+          updatePropData={updatePropData}
         />
         <LineInputText
           label={"Location"}
           placeholder={"Location"}
           className={"experienceLocationContainer"}
           forProp={"location"}
-          value={data.location}
-          handleSet={updateData}
+          value={experience.location}
+          updatePropData={updatePropData}
         />
-        <ExperienceDescription data={data} handleSet={updateData} />
+        <ExperienceDescription
+          experience={experience}
+          // handleSet={updateData}
+          setExperienceData={setExperienceData}
+          experienceData={experienceData}
+          updatrePropData={updatePropData}
+        />
       </form>
     </div>
   );
 }
 
 // Component that is the contaner for the experience list
-function ExperienceDescription({ data, handleSet }) {
-  console.log(data);
-  const lines = data.experience;
+function ExperienceDescription({
+  experience,
+  setExperienceData,
+  experienceData,
+}) {
+  // console.log(companyArray);
+  const lines = experience.experience;
 
   const handleDelete = (id) => {
-    const company = data.filter;
+    const companyIndex = experienceData.filter(
+      (company) => company.id === experience.id
+    );
+
     const newLines = lines.filter((line) => line.id !== id);
-    const newData = data;
-    newData.experience = newLines;
-    handleSet(newData);
+    const updateCompany = experienceData;
+    updateCompany[companyIndex].ExperienceLines = newLines;
+    console.log(updateCompany);
+    // const newData = data;
+    // newData.experience = newLines;
+    setExperienceData(updateCompany);
   };
 
   const handleAddLine = () => {
