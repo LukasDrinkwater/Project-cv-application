@@ -47,33 +47,35 @@ function ExperienceBox({ experience, setExperienceData, experienceData }) {
     // function when calling a set function.
     // console.log(propToUpdate);
 
-    //
     setExperienceData((prevData) => {
       return prevData.map((company) => {
         if (company.id === experience.id) {
-          // console.log(experience);
-          return {
-            ...company,
-            [propToUpdate]: company[propToUpdate].map((property) => {
-              // console.log("here");
-              if (property.id === line.id) {
-                return { ...property, text: value };
-              }
-              console.log(property);
-              return { ...property, value };
-            }),
-          };
+          // console.log("here", company[propToUpdate]);
+          console.log(company[propToUpdate]);
+          console.log(Array.isArray(company.propToUpdate));
+          // if (Array.isArray(company.propToUpdate)) {
+          if (propToUpdate === "experience") {
+            return {
+              ...company,
+              [propToUpdate]: company[propToUpdate].map((property) => {
+                // console.log("here");
+                if (property.id === line.id) {
+                  return { ...property, text: value };
+                }
+                return property;
+              }),
+            };
+          } else {
+            return {
+              ...company,
+              [propToUpdate]: value,
+            };
+          }
         }
         return company;
       });
     });
     //
-
-    // setExperienceData((prevData) => ({
-    //   // i need to navigate the the specific company first.
-    //   ...prevData,
-    //   [propToUpdate]: value,
-    // }));
   };
   return (
     <div className="experienceContainer">
@@ -159,10 +161,12 @@ function ExperienceDescription({
     setExperienceData((prevData) => {
       return prevData.map((company) => {
         if (company.id === experience.id) {
-          console.log(company);
+          // console.log(company);
           const newExperienceLines = [...company.experience, newLine];
+          console.log(newExperienceLines);
           return { ...company, experience: newExperienceLines };
         }
+        return company;
       });
     });
   };
@@ -192,6 +196,7 @@ function ExperienceDescription({
 
 // Component that creates the experience lines
 function ExperienceLines({ lines, handleDelete, handleChange }) {
+  console.log(lines);
   return (
     <div className="experienceLists">
       {lines.map((line) => (

@@ -15,8 +15,8 @@ function Sidebar({
 }) {
   return (
     <div className="sidebarContainer">
-      {/* <PersonalDetailsBox data={personalData} setData={setPersonalData} /> */}
-      {/* <EducationBox data={educationData} setData={setEducationData} /> */}
+      <PersonalDetailsBox data={personalData} setData={setPersonalData} />
+      <EducationBox data={educationData} setData={setEducationData} />
       <ExperienceContainer
         experienceData={experienceData}
         setExperienceData={setExperienceData}
