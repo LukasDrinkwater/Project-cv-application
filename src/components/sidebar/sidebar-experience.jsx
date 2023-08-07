@@ -143,16 +143,14 @@ function ExperienceDescription({
   const lines = experience.experience;
 
   const handleDelete = (id) => {
-    const companyIndex = experienceData.filter(
+    const companyIndex = experienceData.findIndex(
       (company) => company.id === experience.id
     );
 
     const newLines = lines.filter((line) => line.id !== id);
-    const updateCompany = experienceData;
-    updateCompany[companyIndex].ExperienceLines = newLines;
-    console.log(updateCompany);
-    // const newData = data;
-    // newData.experience = newLines;
+    const updateCompany = [...experienceData];
+
+    updateCompany[companyIndex].experience = newLines;
     setExperienceData(updateCompany);
   };
 
@@ -196,7 +194,7 @@ function ExperienceDescription({
 
 // Component that creates the experience lines
 function ExperienceLines({ lines, handleDelete, handleChange }) {
-  console.log(lines);
+  // console.log(lines);
   return (
     <div className="experienceLists">
       {lines.map((line) => (
@@ -206,7 +204,9 @@ function ExperienceLines({ lines, handleDelete, handleChange }) {
             placeholder={"Description/Responsibility"}
             onChange={(event) => handleChange(line, event)}
           ></textarea>
-          <button onClick={() => handleDelete(line.id)}>X</button>
+          <button type="button" onClick={() => handleDelete(line.id)}>
+            X
+          </button>
         </div>
       ))}
     </div>
