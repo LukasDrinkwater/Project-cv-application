@@ -22,12 +22,15 @@ function App() {
   const [experienceData, setExperienceData] = useState([
     {
       id: uuid(),
-      company: "",
-      position: "",
-      startDate: "",
-      endDate: "",
-      location: "",
-      experience: [{ id: uuid(), text: "" }],
+      company: "test company",
+      position: "front end dev",
+      startDate: "2023",
+      endDate: "Present",
+      location: "UK",
+      experience: [
+        { id: uuid(), text: "Worked as a front end dev" },
+        { id: uuid(), text: "testingt testing" },
+      ],
     },
   ]);
 
