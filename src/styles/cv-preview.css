@@ -1,0 +1,171 @@
+.CVPreviewContainer {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  /* flex-grow: 1; */
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* CV PERSONAL CONTAINER */
+
+.CVPersonalContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* .cvPersonalContainer div {
+  flex: 1;
+} */
+
+.name {
+  flex-basis: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name p {
+  /* align-self: center; */
+}
+
+.email,
+.phoneNumber,
+.address {
+  flex: 1;
+  padding: 10px;
+  padding-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CV EDUCATION CONTAINER STYLES */
+
+.educationH2Container {
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #add;
+}
+
+.educationH2Container h2 {
+  margin: 0px;
+  padding: 0px;
+}
+
+.CVEducationContainer {
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* .startEndDate {
+  display: flex;
+  width: 100%;
+} */
+
+.startEndDate p {
+  width: 100%;
+  width: 110px;
+}
+
+.educationInfoContainer {
+  padding-left: 20px;
+}
+
+.school {
+  font-weight: bold;
+}
+
+.school,
+.degree {
+  display: flex;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+/* CV EXPERIENCE CONTAINER STYLES */
+
+.experienceH2Container {
+  display: flex;
+  justify-content: center;
+  background-color: #add;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.experienceH2Container h2 {
+  margin: 0px;
+  padding: 0px;
+}
+
+.CVExperienceContainer {
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: left;
+  flex-grow: 1;
+  flex-direction: column;
+  /* align-items: stretch; */
+}
+
+.locationContainer {
+  width: 100%;
+  width: 110px;
+  display: flex;
+  flex-direction: column;
+}
+
+.companyContainer {
+  /* flex-basis: 100%; */
+  margin-bottom: 10px;
+  display: flex;
+  /* justify-content: space-between; */
+  border: 1px solid #add;
+}
+
+.dateP {
+  width: 100%;
+  width: 110px;
+}
+
+.company {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  font-weight: bold;
+}
+
+.job {
+  margin-top: 0px;
+}
+
+.dateP {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.locationP {
+  margin-top: 0px;
+  padding-top: 0px;
+  margin-bottom: 0px;
+}
+
+.experienceDetailContainer {
+  display: flex;
+  padding-left: 20px;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+}
+
+.experienceLines ul {
+  /* margin-left: 0px; */
+  padding-left: 0px;
+  padding-left: 20px;
+  margin-top: 0px;
+}

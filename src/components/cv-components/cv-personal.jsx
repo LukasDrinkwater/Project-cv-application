@@ -1,6 +1,6 @@
 function CVPersonal({ personalData }) {
   return (
-    <div className="cvPersonalContainer">
+    <div className="CVPersonalContainer">
       {Object.keys(personalData).map((key) => (
         <div key={key} className={key}>
           <p>{personalData[key]}</p>

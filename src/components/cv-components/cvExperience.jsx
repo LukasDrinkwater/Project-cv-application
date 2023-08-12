@@ -4,15 +4,17 @@ function CVExperience({ experienceData }) {
   // console.log(experienceData);
 
   return (
-    <div className="cvExperienceContainer">
+    <div className="CVExperienceContainer">
       {experienceData.map((element) => (
         <Fragment key={element.id}>
-          <div className="locationContainer">
-            <p>{`${element.startDate} - ${element.endDate}`}</p>
-            <p>{element.location}</p>
-          </div>
-          <div className="experienceDetailContainer">
-            <CVExperienceLine element={element} />
+          <div className="companyContainer">
+            <div className="locationContainer">
+              <p className="dateP">{`${element.startDate} - ${element.endDate}`}</p>
+              <p className="locationP">{element.location}</p>
+            </div>
+            <div className="experienceDetailContainer">
+              <CVExperienceLine element={element} />
+            </div>
           </div>
         </Fragment>
       ))}
@@ -27,8 +29,8 @@ function CVExperienceLine({ element }) {
     // <div className="experienceDetailContainer" key={element.id}>
     <>
       <div className="companyInfo">
-        <p>{element.company}</p>
-        <p>{element.position}</p>
+        <p className="company">{element.company}</p>
+        <p className="job">{element.position}</p>
       </div>
       <div className="experienceLines">
         <ul>

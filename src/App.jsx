@@ -3,6 +3,7 @@ import { Sidebar } from "./components/sidebar/sidebar";
 import { CVPreview } from "./components/cv-components/cv-preview";
 import { v4 as uuid } from "uuid";
 import "./styles/app.css";
+import "./styles/cv-preview.css";
 
 function App() {
   const [personalData, setPersonalData] = useState({

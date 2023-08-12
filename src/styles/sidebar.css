@@ -1,4 +1,5 @@
 .sidebarContainer input {
+  max-width: 500px;
 }
 
 .sidebarContainer h2 {
