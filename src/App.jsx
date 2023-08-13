@@ -7,30 +7,30 @@ import "./styles/cv-preview.css";
 
 function App() {
   const [personalData, setPersonalData] = useState({
-    name: "Lukas",
-    email: "email@email.com",
-    phoneNumber: "0721551",
-    address: "99 street",
+    name: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
   });
 
   const [educationData, setEducationData] = useState({
-    school: "test school",
-    degree: "coding",
-    startDate: "2020",
-    endDate: "2022",
+    school: "",
+    degree: "",
+    startDate: "",
+    endDate: "",
   });
 
   const [experienceData, setExperienceData] = useState([
     {
       id: uuid(),
-      company: "test company",
-      position: "front end dev",
-      startDate: "2023",
-      endDate: "Present",
-      location: "UK",
+      company: "",
+      position: "",
+      startDate: "",
+      endDate: "",
+      location: "",
       experience: [
-        { id: uuid(), text: "Worked as a front end dev" },
-        { id: uuid(), text: "testingt testing" },
+        { id: uuid(), text: "" },
+        { id: uuid(), text: "" },
       ],
     },
   ]);

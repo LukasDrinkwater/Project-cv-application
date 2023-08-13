@@ -9,7 +9,9 @@ function CVExperience({ experienceData }) {
         <Fragment key={element.id}>
           <div className="companyContainer">
             <div className="locationContainer">
-              <p className="dateP">{`${element.startDate} - ${element.endDate}`}</p>
+              {element.startDate && (
+                <p className="dateP">{`${element.startDate} - ${element.endDate}`}</p>
+              )}
               <p className="locationP">{element.location}</p>
             </div>
             <div className="experienceDetailContainer">
@@ -34,9 +36,9 @@ function CVExperienceLine({ element }) {
       </div>
       <div className="experienceLines">
         <ul>
-          {element.experience.map((line) => (
-            <li key={line.id}>{line.text}</li>
-          ))}
+          {element.experience.map(
+            (line) => line.text && <li key={line.id}>{line.text}</li>
+          )}
         </ul>
       </div>
     </>
