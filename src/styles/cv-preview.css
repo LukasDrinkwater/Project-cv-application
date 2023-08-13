@@ -3,8 +3,14 @@
   flex-direction: column;
   padding-left: 20px;
   /* flex-grow: 1; */
-  max-width: 1000px;
+  flex: 1;
+  /* max-width: 750px; */
   width: 100%;
+}
+
+.CVPreviewContainer {
+  display: flex;
+  flex: 1;
 }
 
 /* CV PERSONAL CONTAINER */
@@ -14,11 +20,13 @@
   flex-wrap: wrap;
   padding-left: 20px;
   padding-right: 20px;
+  background-color: rgb(63, 167, 167);
 }
 
-/* .cvPersonalContainer div {
-  flex: 1;
-} */
+.CVPreviewContainer div {
+  /* flex-grow: 1; */
+  /* flex-shrink: 0; */
+}
 
 .name {
   flex-basis: 100%;
@@ -26,10 +34,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.name p {
-  /* align-self: center; */
 }
 
 .email,
@@ -48,9 +52,10 @@
 .educationH2Container {
   display: flex;
   justify-content: center;
-  margin-left: 10px;
-  margin-right: 10px;
-  background-color: #add;
+  /* margin-left: 10px; */
+  /* margin-right: 10px; */
+  margin-top: 20px;
+  background-color: rgba(170, 221, 221, 0.75);
 }
 
 .educationH2Container h2 {
@@ -76,6 +81,7 @@
 
 .educationInfoContainer {
   padding-left: 20px;
+  padding-right: 20px;
 }
 
 .school {
@@ -94,9 +100,10 @@
 .experienceH2Container {
   display: flex;
   justify-content: center;
-  background-color: #add;
-  margin-left: 10px;
-  margin-right: 10px;
+  background-color: rgba(170, 221, 221, 0.75);
+  /* margin-left: 10px; */
+  /* margin-right: 10px; */
+  margin-top: 20px;
 }
 
 .experienceH2Container h2 {
@@ -106,8 +113,8 @@
 
 .CVExperienceContainer {
   display: flex;
-  padding-left: 10px;
-  padding-right: 10px;
+  /* padding-left: 10px; */
+  /* padding-right: 10px; */
   justify-content: left;
   flex-grow: 1;
   flex-direction: column;
@@ -123,7 +130,10 @@
 
 .companyContainer {
   /* flex-basis: 100%; */
-  margin-bottom: 10px;
+  margin-top: 10px;
+  /* margin-bottom: 10px; */
+  padding-left: 10px;
+  padding-right: 10px;
   display: flex;
   /* justify-content: space-between; */
   border: 1px solid #add;

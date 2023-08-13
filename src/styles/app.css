@@ -1,5 +1,15 @@
 .appContainer {
   display: flex;
   max-width: 1700px;
-  width: 100%;
+  /* width: 100%; */
+  flex: 1;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  /* flex: 1; */
+  place-items: center;
+  /* min-width: 320px; */
+  min-height: 100vh;
 }
