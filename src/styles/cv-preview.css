@@ -2,15 +2,18 @@
   display: flex;
   flex-direction: column;
   padding-left: 20px;
+  width: min(100%, 1700px);
 
   /* flex: 1; */
-  max-width: 750px;
-  width: 100%;
+  /* max-width: 750px; */
+  /* width: 100%; */
 }
 
 .CVPreviewContainer {
   /* display: flex; */
   /* flex: 1; */
+  /* width: clamp(300px, 100%, 1200px); */
+  width: min(50vw, 1000px);
 }
 
 /* CV PERSONAL CONTAINER */
@@ -26,6 +29,7 @@
 .CVPreviewContainer div {
   /* flex-grow: 1; */
   /* flex-shrink: 0; */
+  /* width: min(500px, 1200px); */
 }
 
 .name {

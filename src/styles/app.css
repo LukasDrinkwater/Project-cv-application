@@ -1,8 +1,8 @@
 .appContainer {
   display: flex;
-  max-width: 1700px;
-  /* width: 100%; */
-  flex: 1;
+  max-width: 1000px;
+  /* width: min(100% 1700px); */
+  /* flex: 1; */
 }
 
 body {
