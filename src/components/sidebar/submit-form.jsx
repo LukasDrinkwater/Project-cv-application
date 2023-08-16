@@ -1,10 +1,23 @@
-import { useState } from "react";
-import { v4 as uuid } from "uuid";
+import { ShowCVPreviewContext } from "../../App";
+import { useContext } from "react";
+import {
+  useShowCVPreview,
+  useShowCVPreviewUpdate,
+} from "../../context/showCVPreviewContext";
 
-function SubmitForm({ personalData, educationData, experienceData }) {
-  const handleSubmit = () => {};
+function SubmitForm() {
+  // const setShowCVPreview =
 
-  return <button onClick={handleSubmit}>Generate CV</button>;
+  // const generateCV = () => {
+  //   // set a state to true so it shows the cv preview
+  //   setShowCVPreview(true);
+  // };
+
+  return (
+    <>
+      <button onClick={toggleShowCV}>Generate CV</button>;
+    </>
+  );
 }
 
 export { SubmitForm };

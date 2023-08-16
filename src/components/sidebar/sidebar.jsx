@@ -21,11 +21,7 @@ function Sidebar({
         experienceData={experienceData}
         setExperienceData={setExperienceData}
       />
-      <SubmitForm
-        personalData={personalData}
-        educationData={educationData}
-        experienceData={experienceData}
-      />
+      <SubmitForm />
     </div>
   );
 }
