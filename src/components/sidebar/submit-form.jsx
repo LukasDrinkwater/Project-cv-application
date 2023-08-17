@@ -1,17 +1,11 @@
-import { ShowCVPreviewContext } from "../../App";
-import { useContext } from "react";
-import {
-  useShowCVPreview,
-  useShowCVPreviewUpdate,
-} from "../../context/showCVPreviewContext";
-
-function SubmitForm() {
+function SubmitForm({ setShowCVPreview }) {
   // const setShowCVPreview =
 
-  // const generateCV = () => {
-  //   // set a state to true so it shows the cv preview
-  //   setShowCVPreview(true);
-  // };
+  const toggleShowCV = () => {
+    // set a state to true so it shows the cv preview
+    setShowCVPreview(true);
+    console.log("here");
+  };
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { PersonalDetailsBox } from "./sidebar-personal-details";
 import { EducationBox } from "./sidebar-education";
-import { ExperienceBox, ExperienceContainer } from "./sidebar-experience";
+import { ExperienceContainer } from "./sidebar-experience";
 import { SubmitForm } from "./submit-form";
 
 // component that creates the sidebar structure and calls the personal details,
@@ -12,6 +12,8 @@ function Sidebar({
   setEducationData,
   experienceData,
   setExperienceData,
+  showCVPreview,
+  setShowCVPreview,
 }) {
   return (
     <div className="sidebarContainer">
@@ -21,7 +23,10 @@ function Sidebar({
         experienceData={experienceData}
         setExperienceData={setExperienceData}
       />
-      <SubmitForm />
+      <SubmitForm
+        showCVPreview={showCVPreview}
+        setShowCVPreview={setShowCVPreview}
+      />
     </div>
   );
 }
